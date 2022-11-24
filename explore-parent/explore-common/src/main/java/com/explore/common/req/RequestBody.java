@@ -1,4 +1,4 @@
-package com.explore.common.tool.req;
+package com.explore.common.req;
 
 import com.alibaba.fastjson.JSONObject;
 

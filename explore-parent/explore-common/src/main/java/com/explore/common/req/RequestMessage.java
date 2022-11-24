@@ -1,4 +1,4 @@
-package com.explore.common.tool.req;
+package com.explore.common.req;
 
 public class RequestMessage {
 	private RequestBody body;
