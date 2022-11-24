@@ -1,0 +1,18 @@
+server:
+  #应用端口
+  port: 9011
+  
+eureka:
+  instance:
+     #客户端在注册时使用自己的IP而不是主机名，默认为false
+    prefer-ip-address: false
+    #应用实例IP
+    ip-address: 127.0.0.1     
+    #eureka服务器在接受到实例的最后一次发出的心跳后，需要等待多久才可以将此实例删除，默认90秒
+    lease-expiration-duration-in-seconds: 90
+    #eureka客户端需要多长时间发送心跳给eureka服务器，表明他仍然活着，默认30秒
+    lease-renewal-interval-in-seconds: 30
+  client:
+    service-url: # EurekaServer的地址，集群时多个注册中心地址以逗号分隔。
+      defaultZone: http://p1:9001/eureka,http://p2:9002/eureka,http://p3:9003/eureka
+      

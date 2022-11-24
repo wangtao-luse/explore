@@ -1,0 +1,25 @@
+server:
+  #应用端口
+  port: 9030
+
+
+feign:  compression:    request:
+                 #开启请求 GzIP压缩      enabled: true
+                  #设置支持 GZIP 压缩的 MIME 类型，即请求/响应类型。
+      mime-types:      - text/xml
+      - application/xml
+      - application/json
+                 #配置启动压缩数据的最小阈值，单位字节。默认为 2048
+      min-request-size: 512
+    response:
+              #开启响应 GZIP压缩      enabled: true
+
+spring:  redis:    database: 0
+    host: 1.116.226.147
+    port: 6379
+    password: redis@958958       
+#  security:
+         # 静态用户，一般只在内部网络认证中使用,如内部服务器1访问服务器2。   # user:
+                  # 设置静态用户名   #  name: user
+               # 设置静态用户名
+   #   password: admin
