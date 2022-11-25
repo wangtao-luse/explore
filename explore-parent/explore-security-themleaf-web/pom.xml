@@ -11,7 +11,11 @@
   <packaging>war</packaging>
   <name>explore-security-themleaf-web Maven Webapp</name>
   <url>http://maven.apache.org</url>
-  <dependencies>
+  <dependencies>  
+   <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+   </dependency>
    <!-- eurek client -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
