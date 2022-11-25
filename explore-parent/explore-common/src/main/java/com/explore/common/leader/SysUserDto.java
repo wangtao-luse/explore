@@ -15,4 +15,10 @@ public String getPasswd() {
 public void setPasswd(String passwd) {
 	this.passwd = passwd;
 }
+public SysUserDto selectOne() {
+	SysUserDto user =new SysUserDto();
+	   user.setPasswd("password");
+	   user.setUserName("admin");
+	   return user;
+}
 }

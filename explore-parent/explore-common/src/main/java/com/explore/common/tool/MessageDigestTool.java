@@ -64,6 +64,7 @@ private static String toHexString(byte[] bytes) {
     StringBuilder builder = new StringBuilder();
     for (byte b : bytes) {
         //java.lang.Integer.toHexString() 方法的参数是int(32位)类型，
+    	
         String temp = Integer.toHexString(b & 0xFF);
         if (temp.length() == 1) {
             builder.append("0");
