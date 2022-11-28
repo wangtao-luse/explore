@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
@@ -30,11 +31,12 @@ private static void generatorCode(String[] tablePrefix,String[]tableNames,String
 	
 	Properties properties = setProperties(mouduleName,moudelPrefix);
 	properties.setProperty("author", author);
-	 AutoGenerator mpg = new AutoGenerator();
+	AutoGenerator mpg = new AutoGenerator();
 	 mpg.setGlobalConfig(globalConfig(properties));
 	 mpg.setDataSource(dataSourceConfig(properties));
 	 mpg.setPackageInfo(packageConfig(properties));
 	 mpg.setStrategy(strategyConfig(tablePrefix, tableNames, properties));
+	 
 	 mpg.execute();
 }
 private static Properties setProperties(String module,String packageprefix) {
@@ -48,7 +50,7 @@ private static Properties setProperties(String module,String packageprefix) {
 	poreties.setProperty("swagger2","0" );//开启 swagger2 模式(1:表示开启;默认不开启;0:表示不开启)
 	poreties.setProperty("idType","auto" );//指定生成的主键的ID类：auto:数据库ID自增
 	
-	//数据源配置1.116.226.147
+	//数据源配置
 	poreties.setProperty("url","jdbc:mysql://1.116.226.147:3306/member?serverTimezone=UTC&useSSL=false" );//驱动连接的URL
 	poreties.setProperty("driverName","com.mysql.cj.jdbc.Driver" );//驱动名称
 	poreties.setProperty("username","root" );//驱动名称
@@ -64,7 +66,7 @@ private static Properties setProperties(String module,String packageprefix) {
 	// /explore-model/src/main/java/com/explore/model/member
 	String entity_path = base+File.separator+modPrefix+"-model/src/main/java/com/"+modPrefix+"/model/"+packageprefix;
 	// /explore-member-persist/src/main/java/com.explore.member
-	String mapper_path = base+File.separator+mod+"-persist/src/main/java/com/"+modPrefix+"/"+packageprefix;
+	String mapper_path = base+File.separator+mod+"-persist/src/main/java/com/"+modPrefix+"/"+packageprefix+"/persist";
 	// /explore-member-persist/src/main/resources/mapping
 	String xml_path = base+File.separator+mod+"-persist/src/main/resources/mapping";
 	// /explore-member-service/src/main/java/com/explore/member/service

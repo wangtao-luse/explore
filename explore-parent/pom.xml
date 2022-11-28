@@ -37,7 +37,7 @@
    <shiro-spring-boot.version>1.10.0</shiro-spring-boot.version>
    <spring-cloud-hystrix.version>1.4.7.RELEASE</spring-cloud-hystrix.version>
    <fastjson.version>2.0.18</fastjson.version>
-   
+   <velocity-engine.version>2.3</velocity-engine.version>
   </properties>
   <dependencies>
      <!-- 热部署 -->
@@ -99,6 +99,11 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql-connector-java.version}</version>
+		</dependency>
+		<dependency>
+		  <groupId>org.apache.velocity</groupId>
+		  <artifactId>velocity-engine-core</artifactId>
+		  <version>${velocity-engine.version}</version>
 		</dependency>
       </dependencies>
   </dependencyManagement>
