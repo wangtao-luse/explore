@@ -49,7 +49,7 @@ private static Properties setProperties(String module,String packageprefix) {
 	poreties.setProperty("idType","auto" );//指定生成的主键的ID类：auto:数据库ID自增
 	
 	//数据源配置1.116.226.147
-	poreties.setProperty("url","jdbc:mysql://1.116.226.147:3306/member?serverTimezone=UTC" );//驱动连接的URL
+	poreties.setProperty("url","jdbc:mysql://1.116.226.147:3306/member?serverTimezone=UTC&useSSL=false" );//驱动连接的URL
 	poreties.setProperty("driverName","com.mysql.cj.jdbc.Driver" );//驱动名称
 	poreties.setProperty("username","root" );//驱动名称
 	poreties.setProperty("password","mysql@958958" );//驱动名称
