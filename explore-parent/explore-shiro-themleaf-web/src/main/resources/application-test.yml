@@ -1,13 +1,13 @@
 server:
   #应用端口
-  port: 9021
+  port: 9041
   
 eureka:
   instance:
-     #客户端在注册时使用自己的IP而不是主机名，默认为false
+    #客户端在注册时使用自己的IP而不是主机名，默认为false
     prefer-ip-address: false
     #应用实例IP
-    ip-address: 127.0.0.1     
+    ip-address: 127.0.0.1           
     #eureka服务器在接受到实例的最后一次发出的心跳后，需要等待多久才可以将此实例删除，默认90秒
     lease-expiration-duration-in-seconds: 90
     #eureka客户端需要多长时间发送心跳给eureka服务器，表明他仍然活着，默认30秒
@@ -15,4 +15,19 @@ eureka:
   client:
     service-url: # EurekaServer的地址，集群时多个注册中心地址以逗号分隔。
       defaultZone: http://p1:9001/eureka,http://p2:9002/eureka,http://p3:9003/eureka
-      
+
+feign:
+  compression:
+    request:
+                 #开启请求 GzIP压缩
+      enabled: true
+                  #设置支持 GZIP 压缩的 MIME 类型，即请求/响应类型。
+      mime-types:
+      - text/xml
+      - application/xml
+      - application/json
+                 #配置启动压缩数据的最小阈值，单位字节。默认为 2048
+      min-request-size: 512
+    response:
+              #开启响应 GZIP压缩
+      enabled: true

@@ -1,6 +1,6 @@
 server:
   #应用端口
-  port: 9031
+  port: 9021
   
 eureka:
   instance:
