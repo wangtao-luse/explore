@@ -40,4 +40,7 @@ public class ResponseMessage {
 	public static ResponseMessage fail() {
 		return new ResponseMessage(ResultCode.FAIL.getCode(), ResultCode.FAIL.getMsg());
 	}
+	public static ResponseMessage fail(String msg) {
+		return new ResponseMessage(ResultCode.FAIL.getCode(), msg);
+	}
 }

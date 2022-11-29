@@ -38,12 +38,9 @@
    <shiro-spring-boot.version>1.9.1</shiro-spring-boot.version>
    <spring-cloud-hystrix.version>1.4.7.RELEASE</spring-cloud-hystrix.version>
    <fastjson.version>2.0.18</fastjson.version>
-<<<<<<< HEAD
    <velocity-engine.version>2.3</velocity-engine.version>
-=======
    
    
->>>>>>> springboot-2.3.12
   </properties>
   <dependencies>
      <!-- 热部署 -->
@@ -117,6 +114,11 @@
 		   <artifactId>shiro-spring-boot-web-starter</artifactId>
 	       <version>${shiro-spring-boot.version}</version>
 	    </dependency>
+	    <dependency>
+		  <groupId>org.apache.shiro</groupId>
+		  <artifactId>shiro-core</artifactId>
+		  <version>${shiro-spring-boot.version}</version>
+		</dependency>
       </dependencies>
   </dependencyManagement>
   <build>
