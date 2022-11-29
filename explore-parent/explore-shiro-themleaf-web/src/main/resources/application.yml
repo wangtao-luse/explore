@@ -1,2 +1,2 @@
 spring:  profiles:    active: dev
-  #应用名称  application:    name:  explore-security-web 
+  #应用名称  application:    name:  explore-shiro-web 

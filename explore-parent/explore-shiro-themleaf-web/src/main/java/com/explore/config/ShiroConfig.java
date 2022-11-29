@@ -54,7 +54,7 @@ public ShiroFilterFactoryBean shiroFilterFactoryBean (DefaultWebSecurityManager 
 @Bean
 public HashedCredentialsMatcher credentialsMatcher() {
 	HashedCredentialsMatcher  matcher= new HashedCredentialsMatcher();
-	matcher.setHashAlgorithmName("MD5");//加密方式
+	matcher.setHashAlgorithmName("sha512");//加密方式
 	matcher.setHashIterations(8192);//迭代加密次数
 	return matcher;
 	
