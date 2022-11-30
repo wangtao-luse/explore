@@ -1,9 +1,8 @@
 package com.explore.config;
 
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.authz.Authorizer;
-import org.apache.shiro.authz.ModularRealmAuthorizer;
-import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
+import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,10 +41,9 @@ public DefaultWebSecurityManager securityManager(MyRealm myRealm) {
  * @return
  */
 @Bean
-public ShiroFilterFactoryBean shiroFilterFactoryBean (DefaultWebSecurityManager securityManager) {
-	ShiroFilterFactoryBean filterBean = new ShiroFilterFactoryBean();
-	filterBean.setSecurityManager(securityManager);
-	return filterBean;
+public ShiroFilterChainDefinition shiroFilterFactoryBean () {
+	 DefaultShiroFilterChainDefinition definition = new DefaultShiroFilterChainDefinition();
+	return definition;
 }
 /**
  * 告诉Shiro使用什么方式加密
@@ -60,8 +58,5 @@ public HashedCredentialsMatcher credentialsMatcher() {
 	
 	
 }
-@Bean
-public Authorizer authorizer(){
-    return new ModularRealmAuthorizer();
-}
+
 }
