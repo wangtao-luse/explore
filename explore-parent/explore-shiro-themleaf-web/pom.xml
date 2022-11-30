@@ -12,11 +12,11 @@
   <name>explore-shiro-themleaf-web Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
-  	<!-- shiro -->
+  	<!-- shiro 
 	<dependency>
 	  <groupId>org.apache.shiro</groupId>
 	  <artifactId>shiro-spring-boot-web-starter</artifactId>
-	</dependency>
+	</dependency>-->
     <!-- eurek client -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
