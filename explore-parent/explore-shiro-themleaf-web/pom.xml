@@ -12,6 +12,10 @@
   <name>explore-shiro-themleaf-web Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+   </dependency>
   	<!-- shiro -->
 	<dependency>
 	  <groupId>org.apache.shiro</groupId>

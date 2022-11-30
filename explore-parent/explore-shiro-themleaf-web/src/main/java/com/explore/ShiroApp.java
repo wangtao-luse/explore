@@ -1,4 +1,4 @@
-package com.explore.online;
+package com.explore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
