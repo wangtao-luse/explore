@@ -41,10 +41,14 @@
    <velocity-engine.version>2.3</velocity-engine.version>
    <springfox-swagger2.version>3.0.0</springfox-swagger2.version>
    <mybatis-plus-boot.version>3.5.2</mybatis-plus-boot.version>
-   
+   <spring-boot-redis.version>1.4.7.RELEASE</spring-boot-redis.version>
   </properties>
   <dependencies>
-     
+     <dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-redis</artifactId>
+	    <version>${spring-boot-redis.version}</version>
+	 </dependency>
      <dependency>
 		<groupId>com.baomidou</groupId>
 		<artifactId>mybatis-plus-boot-starter</artifactId>
