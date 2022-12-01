@@ -22,14 +22,16 @@ private static final String MODULE_MEMBER_SERVICE_PACKAGEPREFIX="member";
 	public static void main(String[] args) {
 		String moduleName = GeneratorHelper.MODULE_MEMBER_SERVICE;
 		String moudelPrefix = GeneratorHelper.MODULE_MEMBER_SERVICE_PACKAGEPREFIX;
-		String author ="wwangtaoc11@163.com";
+		String author ="wwangtaoc11@gamil.com";
 		String[] tablePrefix =  new String [] {"t_m"};
-		String[] tableNames = new String[] {"t_m_member"};
-		generatorCode(tablePrefix, tableNames, moduleName, moudelPrefix, author);
+		String[] tableNames = new String[] {"t_m_member","T_M_OAUTH"};
+		         tableNames = new String[] {"t_m_member_Oauth_view"};
+		boolean view = true;//是否为视图
+		generatorCode(tablePrefix, tableNames, moduleName, moudelPrefix, author,view);
 	}
-private static void generatorCode(String[] tablePrefix,String[]tableNames,String mouduleName,String moudelPrefix,String author ) {
+private static void generatorCode(String[] tablePrefix,String[]tableNames,String mouduleName,String moudelPrefix,String author,boolean view ) {
 	
-	Properties properties = setProperties(mouduleName,moudelPrefix);
+	Properties properties = setProperties(mouduleName,moudelPrefix,view);
 	properties.setProperty("author", author);
 	AutoGenerator mpg = new AutoGenerator();
 	 mpg.setGlobalConfig(globalConfig(properties));
@@ -39,23 +41,24 @@ private static void generatorCode(String[] tablePrefix,String[]tableNames,String
 	 
 	 mpg.execute();
 }
-private static Properties setProperties(String module,String packageprefix) {
-	Properties poreties = new Properties();	
+private static Properties setProperties(String module,String packageprefix,boolean view) {
+	Properties properties = new Properties();	
 	//全局配置
-	poreties.setProperty("activeRecord", "0");//是否支持AR模式  (1:表示支持;默认不支持;0:表示不支持)
-	poreties.setProperty("author", "wwangtaoc11@gmail.com");//作者
-	poreties.setProperty("fileOverride","1" );//是否覆盖已有文件(1:表示覆盖;默认不覆盖;0:表示不覆盖)
-	poreties.setProperty("baseColumnList","1" );//开启 baseColumnList(1:表示开启;默认不开启;0:表示不开启)
-	poreties.setProperty("baseResultMap","1" );//开启 BaseResultMap(1:表示开启;默认不开启;0:表示不开启)
-	poreties.setProperty("swagger2","0" );//开启 swagger2 模式(1:表示开启;默认不开启;0:表示不开启)
-	poreties.setProperty("idType","auto" );//指定生成的主键的ID类：auto:数据库ID自增
 	
+	properties.setProperty("activeRecord", "0");//是否支持AR模式  (1:表示支持;默认不支持;0:表示不支持)
+	properties.setProperty("author", "wwangtaoc11@gmail.com");//作者
+	properties.setProperty("fileOverride","1" );//是否覆盖已有文件(1:表示覆盖;默认不覆盖;0:表示不覆盖)
+	properties.setProperty("baseColumnList","1" );//开启 baseColumnList(1:表示开启;默认不开启;0:表示不开启)
+	properties.setProperty("baseResultMap","1" );//开启 BaseResultMap(1:表示开启;默认不开启;0:表示不开启)
+	properties.setProperty("swagger2","1" );//开启 swagger2 模式(1:表示开启;默认不开启;0:表示不开启)
+	properties.setProperty("idType","auto" );//指定生成的主键的ID类：auto:数据库ID自增
+	properties.setProperty("outputDir", "d://mybataiplus.com");
 	//数据源配置
-	poreties.setProperty("url","jdbc:mysql://1.116.226.147:3306/member?serverTimezone=UTC&useSSL=false" );//驱动连接的URL
-	poreties.setProperty("driverName","com.mysql.cj.jdbc.Driver" );//驱动名称
-	poreties.setProperty("username","root" );//驱动名称
-	poreties.setProperty("password","mysql@958958" );//驱动名称
-	poreties.setProperty("dbType","mysql" );//数据库类型 
+	properties.setProperty("url","jdbc:mysql://1.116.226.147:3306/member?serverTimezone=UTC&useSSL=false" );//驱动连接的URL
+	properties.setProperty("driverName","com.mysql.cj.jdbc.Driver" );//驱动名称
+	properties.setProperty("username","root" );//驱动名称
+	properties.setProperty("password","mysql@958958" );//驱动名称
+	properties.setProperty("dbType","mysql" );//数据库类型 
 	
 	//包配置
 	String absolutePath = System.getProperty("user.dir");
@@ -64,25 +67,31 @@ private static Properties setProperties(String module,String packageprefix) {
 	String modPrefix = module.substring(0, module.indexOf("-"));//explore-member-service-->explore
 	
 	// /explore-model/src/main/java/com/explore/model/member
-	String entity_path = base+File.separator+modPrefix+"-model/src/main/java/com/"+modPrefix+"/model/"+packageprefix;
+	String entity_path = base+File.separator+modPrefix+"-model/src/main/java/com/"+modPrefix+"/model/"+packageprefix+(view==true?"/vo":"");
 	// /explore-member-persist/src/main/java/com.explore.member
 	String mapper_path = base+File.separator+mod+"-persist/src/main/java/com/"+modPrefix+"/"+packageprefix+"/persist";
 	// /explore-member-persist/src/main/resources/mapping
 	String xml_path = base+File.separator+mod+"-persist/src/main/resources/mapping";
 	// /explore-member-service/src/main/java/com/explore/member/service
-	String SERVICE_IMPL_PATH = base+File.separator+mod+"-service/src/main/java/com/"+modPrefix+"/"+packageprefix+"/service";;
-	poreties.setProperty("parent","com.explore" );//父包名
-	poreties.setProperty("mapper","mapper" );//Mapper包名
-	poreties.setProperty("serviceImpl","service" );
-	poreties.setProperty("entity_path", entity_path);
-	poreties.setProperty("mapper_path",mapper_path );
-	poreties.setProperty("xml_path",xml_path);
-	poreties.setProperty("SERVICE_PATH","" );
-	poreties.setProperty("SERVICE_IMPL_PATH",SERVICE_IMPL_PATH );
+	String SERVICE_IMPL_PATH = base+File.separator+mod+"-service/src/main/java/com/"+modPrefix+"/"+packageprefix+"/service";
+	
+	properties.setProperty("parent","com."+modPrefix );//父包名
+	properties.setProperty("mapper",packageprefix+".persist" );//Mapper包名
+	properties.setProperty("entity","model."+packageprefix+(view==true?".vo":"") );//实体类包名
+	properties.setProperty("serviceImpl",packageprefix+".service" );
+	properties.setProperty("service","");
+	properties.setProperty("xml","mapping");
+	
+	properties.setProperty("entity_path", entity_path);
+	properties.setProperty("mapper_path",mapper_path );
+	properties.setProperty("xml_path",xml_path);
+	properties.setProperty("SERVICE_PATH","" );
+	properties.setProperty("SERVICE_IMPL_PATH",SERVICE_IMPL_PATH );
+	properties.setProperty("pathInfo","1" );//1:表示之间生成文件到项目;0:表示将文件生成到指定目录
 	//策略配置
-	poreties.setProperty("naming","underline_to_camel" );//表名生成策略
-	poreties.setProperty("columnNaming","underline_to_camel" );//数据库列映射到实体类的命名策略
-	return poreties;
+	properties.setProperty("naming","underline_to_camel" );//表名生成策略
+	properties.setProperty("columnNaming","underline_to_camel" );//数据库列映射到实体类的命名策略
+	return properties;
 	
 }
 
@@ -104,15 +113,21 @@ private static PackageConfig packageConfig(Properties properties) {
 	PackageConfig pc = new PackageConfig();
 	pc.setParent(properties.getProperty("parent"));    
     pc.setMapper(properties.getProperty("mapper"));
+    pc.setXml(properties.getProperty("xml"));
     pc.setServiceImpl(properties.getProperty("serviceImpl"));
-    //设置自定义输出目录（分布式项目使用）
-    Map<String, String> pathInfo = new HashMap<>();  
-	pathInfo.put(ConstVal.ENTITY_PATH, properties.getProperty("entity_path"));
-	pathInfo.put(ConstVal.MAPPER_PATH, properties.getProperty("mapper_path"));
-	pathInfo.put(ConstVal.XML_PATH, properties.getProperty("xml_path"));
-	pathInfo.put(ConstVal.SERVICE_PATH, properties.getProperty("SERVICE_PATH"));
-    pathInfo.put(ConstVal.SERVICE_IMPL_PATH, properties.getProperty("SERVICE_IMPL_PATH"));
-    pc.setPathInfo(pathInfo);
+    pc.setEntity(properties.getProperty("entity"));
+    pc.setService(properties.getProperty("service",""));
+    if("1".equals(properties.getProperty("pathInfo"))) {
+    	 //设置自定义输出目录（分布式项目使用）
+        Map<String, String> pathInfo = new HashMap<>();  
+    	pathInfo.put(ConstVal.ENTITY_PATH, properties.getProperty("entity_path"));
+    	pathInfo.put(ConstVal.MAPPER_PATH, properties.getProperty("mapper_path"));
+    	pathInfo.put(ConstVal.XML_PATH, properties.getProperty("xml_path"));
+    	pathInfo.put(ConstVal.SERVICE_PATH, properties.getProperty("SERVICE_PATH"));
+        pathInfo.put(ConstVal.SERVICE_IMPL_PATH, properties.getProperty("SERVICE_IMPL_PATH"));
+        pc.setPathInfo(pathInfo);
+    }
+   
 	return pc;
 	
 }
@@ -154,8 +169,18 @@ private static GlobalConfig globalConfig(Properties properties) {
     if("auto".equals(properties.getProperty("idType", "auto"))){
     	config.setIdType(IdType.AUTO);
     }  
+    if("0".equals(properties.getProperty("pathInfo"))) {
+    	 config.setOutputDir(properties.getProperty("outputDir"));
+    }  
     // 作者
-    config .setAuthor(properties.getProperty("author"));       
+    config .setAuthor(properties.getProperty("author")); 
+    //自定义文件命名，注意 %s 会自动填充表实体属性！
+    config.setMapperName("%sMapper");
+    config.setXmlName("%sMapper");
+    config.setServiceName("%sService");
+    config.setServiceImplName("%sService");
+    config.setControllerName("%sController");
+   
       
 return config;
        

@@ -15,4 +15,15 @@ eureka:
   client:
     service-url: # EurekaServer的地址，集群时多个注册中心地址以逗号分隔。
       defaultZone: http://p1:9000/eureka
-      
+
+spring:  datasource: #mysql的配置
+    url: jdbc:mysql://1.116.226.147:3306/member?serverTimezone=UTC&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: mysql@958958
+    schema:    - classpath:member.sql
+    data:   # - classpath:member-online-user-data.sql # 仅在第一次数据初始化时使用
+    initialization-mode: always
+      redis:    host: 1.116.226.147
+    port: 6379
+    password: redis@958958

@@ -14,12 +14,12 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
-     <!-- shiro 
+     <!-- shiro -->
      <dependency>
 	   <groupId>org.apache.shiro</groupId>
 		<artifactId>shiro-core</artifactId>
 		<optional>true</optional>
-	 </dependency>-->
+	 </dependency>
      <dependency>
 	  <groupId>org.apache.velocity</groupId>
 	  <artifactId>velocity-engine-core</artifactId>

@@ -439,4 +439,8 @@ public static Date getWeekEnd() throws ParseException{
    
     return time;
 }
+public static void main(String[] args) {
+	long currentTime = DateTool.currentTime();
+	System.out.println(currentTime);
+}
 }

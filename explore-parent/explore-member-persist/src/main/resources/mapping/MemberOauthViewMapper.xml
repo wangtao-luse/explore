@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.explore.member.persist.MemberOauthViewMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.explore.model.member.vo.MemberOauthView">
+        <result column="ID" property="id" />
+        <result column="UID" property="uid" />
+        <result column="CREATE_AT" property="createAt" />
+        <result column="CREATE_IP" property="createIp" />
+        <result column="LAST_TIME" property="lastTime" />
+        <result column="STATUS" property="status" />
+        <result column="CATEGORY" property="category" />
+        <result column="OAUTH_ID" property="oauthId" />
+        <result column="OAUTH_TYPE" property="oauthType" />
+        <result column="CREDENTIAL" property="credential" />
+        <result column="NICKNAME" property="nickname" />
+        <result column="AVATAR" property="avatar" />
+        <result column="PASSWD" property="passwd" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, UID, CREATE_AT, CREATE_IP, LAST_TIME, STATUS, CATEGORY, OAUTH_ID, OAUTH_TYPE, CREDENTIAL, NICKNAME, AVATAR, PASSWD
+    </sql>
+
+</mapper>

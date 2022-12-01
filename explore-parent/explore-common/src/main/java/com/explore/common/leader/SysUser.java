@@ -1,6 +1,8 @@
 package com.explore.common.leader;
 
-public class SysUser {
+import java.io.Serializable;
+
+public class SysUser implements Serializable {
 private String username;
 private String password;
 

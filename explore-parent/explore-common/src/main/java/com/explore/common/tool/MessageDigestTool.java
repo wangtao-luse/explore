@@ -3,7 +3,7 @@ package com.explore.common.tool;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+@Deprecated
 public class MessageDigestTool {
 private MessageDigestTool() {}
 private static final String SHA_1 = "SHA-1";
