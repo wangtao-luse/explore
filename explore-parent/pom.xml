@@ -35,13 +35,36 @@
    <mybatis-plus-generator.version>3.4.1</mybatis-plus-generator.version>
    <spring-boot-velocity.version>1.4.7.RELEASE</spring-boot-velocity.version>
    <spring-cloud-zuul.version>2.2.10.RELEASE</spring-cloud-zuul.version>
-   <shiro-spring-boot.version>1.9.1</shiro-spring-boot.version>
+   <shiro-spring-boot.version>1.10.1</shiro-spring-boot.version>
    <spring-cloud-hystrix.version>1.4.7.RELEASE</spring-cloud-hystrix.version>
    <fastjson.version>2.0.18</fastjson.version>
-   
+   <velocity-engine.version>2.3</velocity-engine.version>
+   <springfox-swagger2.version>3.0.0</springfox-swagger2.version>
+   <mybatis-plus-boot.version>3.5.2</mybatis-plus-boot.version>
+   <spring-boot-redis.version>1.4.7.RELEASE</spring-boot-redis.version>
    
   </properties>
   <dependencies>
+     <dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-redis</artifactId>
+	    <version>${spring-boot-redis.version}</version>
+	 </dependency>
+     <dependency>
+		<groupId>com.baomidou</groupId>
+		<artifactId>mybatis-plus-boot-starter</artifactId>
+		<version>${mybatis-plus-boot.version}</version>
+	 </dependency>
+	 <dependency>
+	  <groupId>io.springfox</groupId>
+	  <artifactId>springfox-swagger2</artifactId>
+	  <version>${springfox-swagger2.version}</version>
+	</dependency>
+	<dependency>
+	  <groupId>io.springfox</groupId>
+	  <artifactId>springfox-swagger-ui</artifactId>
+	  <version>${springfox-swagger2.version}</version>
+	</dependency>
      <!-- 热部署 -->
      <dependency>
 	   <groupId>org.springframework.boot</groupId>
@@ -96,18 +119,29 @@
 		    <artifactId>mybatis-plus-generator</artifactId>
 		    <version>${mybatis-plus-generator.version}</version>
 		</dependency>
+		
 	     <!-- mysql驱动包 -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql-connector-java.version}</version>
 		</dependency>
+		<dependency>
+		  <groupId>org.apache.velocity</groupId>
+		  <artifactId>velocity-engine-core</artifactId>
+		  <version>${velocity-engine.version}</version>
+		</dependency>
 		<!-- shiro -->
 		<dependency>
 	  	   <groupId>org.apache.shiro</groupId>
 		   <artifactId>shiro-spring-boot-web-starter</artifactId>
-	       <version>${shiro-spring-boot.version}</version>
+		   <version>${shiro-spring-boot.version}</version>
 	    </dependency>
+	    <dependency>
+		  <groupId>org.apache.shiro</groupId>
+		  <artifactId>shiro-core</artifactId>
+		  <version>${shiro-spring-boot.version}</version>
+		</dependency> 
       </dependencies>
   </dependencyManagement>
   <build>
