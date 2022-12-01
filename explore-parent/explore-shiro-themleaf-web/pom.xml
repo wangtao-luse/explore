@@ -36,6 +36,11 @@
     	<artifactId>explore-member-api</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
     </dependency>
+     <dependency>
+    	<groupId>com.explore</groupId>
+    	<artifactId>explore-model</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>explore-shiro-themleaf-web</finalName>

@@ -1,5 +1,8 @@
 package com.explore.common.resp;
 
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.explore.common.tool.StringTool;
+
 public class ResponseMessage {
 	private String resultCode;
 	private String resultMsg;
@@ -42,5 +45,8 @@ public class ResponseMessage {
 	}
 	public static ResponseMessage fail(String msg) {
 		return new ResponseMessage(ResultCode.FAIL.getCode(), msg);
+	}
+	public static boolean successed(ResponseMessage respMsg) {
+		return !StringTool.isEmpty(respMsg) && ResultCode.SUCCESS.equals(respMsg.getResultCode());
 	}
 }

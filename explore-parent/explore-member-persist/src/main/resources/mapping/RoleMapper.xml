@@ -16,5 +16,13 @@
     <sql id="Base_Column_List">
         ID, ROLE_CODE, ROLE_NAME, ROLE_NOTE, ROLE_PARENT, CREATE_AT
     </sql>
+      <select id="selectMemRoleList" parameterType="String" resultType="com.explore.model.member.Role">
+         select ROLE_NAME from t_m_role where ROLE_CODE in(
+			select d.ROLE_CODE from t_m_group_role  d where d.GROUP_CODE in(
+				select c.GROUP_CODE from t_m_member_group c where c.UID=#{uid}
+			)
+		)
+	
+    </select>
 
 </mapper>

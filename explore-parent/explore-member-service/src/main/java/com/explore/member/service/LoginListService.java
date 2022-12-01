@@ -30,7 +30,7 @@ import com.explore.model.member.LoginList;
  */
 @Service
 public class LoginListService extends ServiceImpl<LoginListMapper, LoginList> {
-	private final static Logger logger=LoggerFactory.getLogger(MemberOauthViewService.class);
+	private final static Logger logger=LoggerFactory.getLogger(LoginListService.class);
 	/**
 	 * 登录记录查询
 	 * @param requestMsg
