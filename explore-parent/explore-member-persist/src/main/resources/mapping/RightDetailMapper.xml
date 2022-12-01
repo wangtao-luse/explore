@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.explore.member.persist.RightDetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.explore.model.member.RightDetail">
+        <id column="ID" property="id" />
+        <result column="RIGHT_CODE" property="rightCode" />
+        <result column="URL" property="url" />
+        <result column="ISLOGIN" property="islogin" />
+        <result column="ISLOG" property="islog" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, RIGHT_CODE, URL, ISLOGIN, ISLOG
+    </sql>
+     <select id="selectRightDetailList" parameterType="String" resultType="com.explore.model.member.RightDetail">
+    select URL,ISLOG FROM t_m_right_detail f where f.RIGHT_CODE in(
+		select e.RIGHT_CODE from t_m_role_right e where e.ROLE_CODE in(
+			select d.ROLE_CODE from t_m_group_role  d where d.GROUP_CODE in(
+				select c.GROUP_CODE from t_m_member_group c where c.UID=#{uid}
+
+			)
+		)
+	)
+    </select>
+</mapper>

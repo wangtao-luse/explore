@@ -17,5 +17,5 @@
     <sql id="Base_Column_List">
         ID, UID, CREATE_AT, CREATE_IP, LAST_TIME, STATUS, CATEGORY
     </sql>
-
+   
 </mapper>

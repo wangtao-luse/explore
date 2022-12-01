@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.explore.member.persist.GroupMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.explore.model.member.Group">
+        <id column="ID" property="id" />
+        <result column="GROUD_CODE" property="groudCode" />
+        <result column="GROUP_NAME" property="groupName" />
+        <result column="GROUP_PARENT" property="groupParent" />
+        <result column="GROUP_NOTE" property="groupNote" />
+        <result column="CREATE_AT" property="createAt" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, GROUD_CODE, GROUP_NAME, GROUP_PARENT, GROUP_NOTE, CREATE_AT
+    </sql>
+
+</mapper>

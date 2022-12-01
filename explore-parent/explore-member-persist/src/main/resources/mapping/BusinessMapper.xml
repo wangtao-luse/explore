@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.explore.member.persist.BusinessMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.explore.model.member.Business">
+        <id column="ID" property="id" />
+        <result column="BUSINESSNAME" property="businessname" />
+        <result column="TAXPAYERID" property="taxpayerid" />
+        <result column="PROVINCE" property="province" />
+        <result column="CITY" property="city" />
+        <result column="AREA" property="area" />
+        <result column="ENTERPRISE_ADDR" property="enterpriseAddr" />
+        <result column="EMERGENCY_CONTACT" property="emergencyContact" />
+        <result column="INDUSTRY" property="industry" />
+        <result column="CERT_IMAGE_URL" property="certImageUrl" />
+        <result column="STATUS" property="status" />
+        <result column="REMARK" property="remark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, BUSINESSNAME, TAXPAYERID, PROVINCE, CITY, AREA, ENTERPRISE_ADDR, EMERGENCY_CONTACT, INDUSTRY, CERT_IMAGE_URL, STATUS, REMARK
+    </sql>
+
+</mapper>

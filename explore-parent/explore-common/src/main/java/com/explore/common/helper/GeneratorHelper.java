@@ -24,9 +24,13 @@ private static final String MODULE_MEMBER_SERVICE_PACKAGEPREFIX="member";
 		String moudelPrefix = GeneratorHelper.MODULE_MEMBER_SERVICE_PACKAGEPREFIX;
 		String author ="wwangtaoc11@gamil.com";
 		String[] tablePrefix =  new String [] {"t_m"};
-		String[] tableNames = new String[] {"t_m_member","T_M_OAUTH"};
+		String[] tableNames = new String[] {
+				"t_m_member","T_M_OAUTH","t_m_right_detail","t_m_role_right","t_m_group_role","t_m_member_group",
+				"T_M_GROUP","T_M_PERSON","T_M_BUSINESS"
+				};
 		         tableNames = new String[] {"t_m_member_Oauth_view"};
-		boolean view = true;//是否为视图
+		         tableNames = new String[] {"T_M_GROUP","T_M_ROLE"};
+		boolean view = false;//是否为视图
 		generatorCode(tablePrefix, tableNames, moduleName, moudelPrefix, author,view);
 	}
 private static void generatorCode(String[] tablePrefix,String[]tableNames,String mouduleName,String moudelPrefix,String author,boolean view ) {
