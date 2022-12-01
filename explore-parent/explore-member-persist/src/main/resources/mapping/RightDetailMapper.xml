@@ -15,7 +15,7 @@
     <sql id="Base_Column_List">
         ID, RIGHT_CODE, URL, ISLOGIN, ISLOG
     </sql>
-     <select id="selectRightDetailList" parameterType="String" resultType="com.explore.model.member.RightDetail">
+     <select id="selectMeMRightDetailList" parameterType="String" resultType="com.explore.model.member.RightDetail">
     select URL,ISLOG FROM t_m_right_detail f where f.RIGHT_CODE in(
 		select e.RIGHT_CODE from t_m_role_right e where e.ROLE_CODE in(
 			select d.ROLE_CODE from t_m_group_role  d where d.GROUP_CODE in(
@@ -23,6 +23,6 @@
 
 			)
 		)
-	)
+	) or RIGHT_CODE = '-2'
     </select>
 </mapper>

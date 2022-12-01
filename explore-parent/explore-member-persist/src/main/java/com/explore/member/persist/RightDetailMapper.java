@@ -15,6 +15,6 @@ import com.explore.model.member.RightDetail;
  */
 public interface RightDetailMapper extends BaseMapper<RightDetail> {
 	
-	List<RightDetail> selectRightDetailList(String uid);
+	List<RightDetail> selectMeMRightDetailList(String uid);
 
 }
