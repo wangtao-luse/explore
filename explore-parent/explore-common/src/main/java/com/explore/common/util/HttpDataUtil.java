@@ -3,6 +3,7 @@ package com.explore.common.util;
 import javax.servlet.http.HttpServletRequest;
 
 import com.alibaba.fastjson.JSONObject;
+import com.explore.common.req.RequestBody;
 import com.explore.common.req.RequestHead;
 import com.explore.common.req.RequestMessage;
 
@@ -10,21 +11,24 @@ public class HttpDataUtil {
 
 public static RequestMessage postData(JSONObject content,HttpServletRequest request) {
 	RequestMessage requestMessage = new RequestMessage();
-	RequestHead header = new RequestHead();
+	RequestHead head = new RequestHead();
 	/*
 	 * if(null!=request) {
 	 * header.setRemoteAddr(HttpDataUtil.getRemoteHost(request)); }
 	 */
 	
-	/*
-	 * requestMessage.setRequestHeader(header); RequestBody body = new
-	 * RequestBody(); AccountVo sessionUser = SessionUtil.getSessionUser(); if(null
-	 * != sessionUser) { body.setuId(sessionUser.getuId());
-	 * body.setNickname(sessionUser.getNickname());
-	 * body.setAvatar(sessionUser.getAvatar());
-	 * body.setOauthType(sessionUser.getOauthType()); } body.setContent(content);
-	 * requestMessage.setBody(body);
-	 */
+	  requestMessage.setHead(head);
+	  RequestBody body = new RequestBody(); 
+	 // AccountVo sessionUser = SessionUtil.getSessionUser();
+	 // if(null != sessionUser) {
+	 // body.setuId(sessionUser.getuId());
+	 // body.setNickname(sessionUser.getNickname());
+	  //body.setAvatar(sessionUser.getAvatar());
+	 // body.setOauthType(sessionUser.getOauthType());
+	 // } 
+	  body.setContent(content);
+	  requestMessage.setBody(body);
+	 
 	return requestMessage;
 }
 /**

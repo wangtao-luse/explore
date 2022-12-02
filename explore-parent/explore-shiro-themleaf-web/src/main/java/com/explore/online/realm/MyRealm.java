@@ -24,7 +24,6 @@ import com.explore.common.tool.StringTool;
 import com.explore.common.util.HttpDataUtil;
 import com.explore.member.api.MemberApi;
 import com.explore.model.member.RightDetail;
-import com.explore.model.member.Role;
 import com.explore.model.member.vo.MemberOauthView;
 public class MyRealm extends AuthorizingRealm {
 	
@@ -71,7 +70,7 @@ public class MyRealm extends AuthorizingRealm {
 		SysUser principal = (SysUser) principals.getPrimaryPrincipal();
 		// 2.利用登录的用户信息来获取当前用户的角色或权限(可能需要查询数据库)
 		JSONObject jsonObjct = new JSONObject();
-		jsonObjct.put("OAUTH_ID", principal);
+		jsonObjct.put("uid", principal);
 		RequestMessage postData = HttpDataUtil.postData(jsonObjct, null);
 	    ResponseMessage respMsg = memberApi.selectMemRoleList(postData);		
 		ResponseMessage response = memberApi.selectRightDtailList(postData); 

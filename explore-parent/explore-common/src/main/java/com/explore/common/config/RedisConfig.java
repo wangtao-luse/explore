@@ -1,4 +1,4 @@
-package com.explore.common.util;
+package com.explore.common.config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

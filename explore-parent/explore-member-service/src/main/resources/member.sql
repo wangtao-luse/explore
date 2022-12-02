@@ -228,7 +228,7 @@ RIGHT_CODE varchar(10) COMMENT '权限唯一标识',
 URL VARCHAR(120) COMMENT '资源',
 ISLOGIN	VARCHAR(5)COMMENT'是否登录(anon 不需要登录 authc 需要登录)',
 ISLOG	VARCHAR(2) COMMENT'是否记日志(0:不需要;1:需要)'
-)COMMENT'权限主表';
+)COMMENT'权限明细表';
 
 --11.菜单-权限表
 CREATE TABLE IF NOT EXISTS T_M_SYS_MENU(
