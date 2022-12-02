@@ -1,19 +1,27 @@
 package com.explore.config;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
-import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
+import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.explore.common.encryption.CryptoUtil;
-import com.explore.common.tool.MessageDigestTool;
+import com.explore.common.resp.ResponseMessage;
+import com.explore.common.tool.StringTool;
+import com.explore.model.member.RightDetail;
+import com.explore.online.connector.MemberConnector;
 import com.explore.online.realm.MyRealm;
 
 @Configuration
 public class ShiroConfig {
+	 @Autowired 
+	  MemberConnector memberConnector;
 //1.Realm 代表系统资源	
 @Bean
 public MyRealm  myReaml(HashedCredentialsMatcher credentialsMatcher) {
@@ -24,7 +32,6 @@ public MyRealm  myReaml(HashedCredentialsMatcher credentialsMatcher) {
 
 //2.SecurityManager 流程控制
 @Bean
-@ConditionalOnMissingBean
 public DefaultWebSecurityManager securityManager(MyRealm myRealm) {
 	//创建SecurityManager对象
 	DefaultWebSecurityManager security = new DefaultWebSecurityManager();
@@ -35,9 +42,29 @@ public DefaultWebSecurityManager securityManager(MyRealm myRealm) {
 
 //3. 请求过滤
 @Bean
-public ShiroFilterChainDefinition  shiroFilter() {
-	DefaultShiroFilterChainDefinition   shiroFilter = new DefaultShiroFilterChainDefinition ();
-
+public ShiroFilterFactoryBean  shiroFilterFactoryBean(DefaultWebSecurityManager securityManager) {
+	ShiroFilterFactoryBean  shiroFilter = new ShiroFilterFactoryBean ();
+	shiroFilter.setSecurityManager(securityManager);
+	//设置登录页面,如果不设置会默认去找项目根目录下的login.jsp
+	shiroFilter.setLoginUrl("/login");
+	//配置路径过滤key：是ant路径,支持*,**,?;value配置shiro的默认过滤器, anon:匿名访问;authc:需要认证(登录)才能访问; 
+	//实际开发中会从数据库中读取对应的权限
+	Map<String,String> filterMap = new LinkedHashMap<String, String>();
+	filterMap.put("/css/**","anon");
+	filterMap.put("/md/**","anon");
+	filterMap.put("/js/**","anon");
+	filterMap.put("/img/**","anon");
+	filterMap.put("/test/**", "anon");
+	ResponseMessage resp = memberConnector.selectAnonUrl(null, null);
+	if(ResponseMessage.successed(resp) && !StringTool.isEmpty(resp.getResultData())) {
+		List<String> permission = (List<String>)resp.getResultData();
+		for (String ssion : permission) {
+			filterMap.put(ssion, "anon");
+		}
+	}
+	shiroFilter.setFilterChainDefinitionMap(filterMap);
+	//不能访问的情况下shiro会自动跳转到setLoginUrl()的页面;
+	filterMap.put("/**", "authc");
 	return shiroFilter;
 }
 //告诉Shiro使用什么方式加密

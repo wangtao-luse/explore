@@ -3,6 +3,7 @@ package com.explore.common.util;
 import javax.servlet.http.HttpServletRequest;
 
 import com.alibaba.fastjson.JSONObject;
+import com.explore.common.ao.SesessionUser;
 import com.explore.common.req.RequestBody;
 import com.explore.common.req.RequestHead;
 import com.explore.common.req.RequestMessage;
@@ -19,13 +20,13 @@ public static RequestMessage postData(JSONObject content,HttpServletRequest requ
 	
 	  requestMessage.setHead(head);
 	  RequestBody body = new RequestBody(); 
-	 // AccountVo sessionUser = SessionUtil.getSessionUser();
-	 // if(null != sessionUser) {
-	 // body.setuId(sessionUser.getuId());
-	 // body.setNickname(sessionUser.getNickname());
-	  //body.setAvatar(sessionUser.getAvatar());
-	 // body.setOauthType(sessionUser.getOauthType());
-	 // } 
+	  SesessionUser sessionUser = SessionUtil.getSessionUser();
+	  if(null != sessionUser) {
+		  body.setUid(sessionUser.getUid());
+	      body.setNickname(sessionUser.getNickname());
+	      body.setAvatar(sessionUser.getAvatar());
+	    // body.setOauthType(sessionUser.getOauthType());
+	  } 
 	  body.setContent(content);
 	  requestMessage.setBody(body);
 	 

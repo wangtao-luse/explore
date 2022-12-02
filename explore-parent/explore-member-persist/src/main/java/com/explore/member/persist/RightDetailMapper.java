@@ -1,6 +1,7 @@
 package com.explore.member.persist;
 
 import java.util.List;
+import java.util.Set;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.explore.model.member.RightDetail;
@@ -15,6 +16,7 @@ import com.explore.model.member.RightDetail;
  */
 public interface RightDetailMapper extends BaseMapper<RightDetail> {
 	
-	List<RightDetail> selectMeMRightDetailList(String uid);
+	Set<String> selectMemRightDetailList(String uid);
+	List<String> selectAnonUrl();
 
 }

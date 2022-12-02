@@ -33,9 +33,15 @@ public class MemeberApiController implements MemberApi{
 	}
 
 	@Override
-	public ResponseMessage selectRightDtailList(RequestMessage requestMsg) {
+	public ResponseMessage selectMemRightDetailList(RequestMessage requestMsg) {
 		// TODO Auto-generated method stub
-		return rightDetailService.selectMeMRightDetailList(requestMsg);
+		return rightDetailService.selectMemRightDetailList(requestMsg);
+	}
+
+	@Override
+	public ResponseMessage selectAnonUrl(RequestMessage requestMsg) {
+		// TODO Auto-generated method stub
+		return rightDetailService.selectAnonUrl(requestMsg);
 	}
 
 }

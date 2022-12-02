@@ -13,6 +13,8 @@ public interface MemberApi {
 ResponseMessage selectMemberOauthOne(@RequestBody RequestMessage requestMsg);
 @RequestMapping("/member/selectMemRoleList")
 ResponseMessage selectMemRoleList(@RequestBody RequestMessage requestMsg);
-@RequestMapping("/member/selectRightDtailList")
-ResponseMessage selectRightDtailList(@RequestBody RequestMessage requestMsg);
+@RequestMapping("/member/selectMemRightDetailList")
+ResponseMessage selectMemRightDetailList(@RequestBody RequestMessage requestMsg);
+@RequestMapping("/member/selectAnonUrl")
+ResponseMessage selectAnonUrl(@RequestBody RequestMessage requestMsg);
 }
