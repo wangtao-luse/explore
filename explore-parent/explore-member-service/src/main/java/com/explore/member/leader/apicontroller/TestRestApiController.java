@@ -1,4 +1,4 @@
-package com.explore.member.apicontroller;
+package com.explore.member.leader.apicontroller;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
