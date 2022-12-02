@@ -3,15 +3,14 @@ package com.explore.common.tool;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-@Deprecated
 public class MessageDigestTool {
 private MessageDigestTool() {}
-private static final String SHA_1 = "SHA-1";
-private static final String SHA_224 = "SHA-224";
-private static final String SHA_256 = "SHA-256";
-private static final String SHA_384 = "SHA-384";
-private static final String SHA_512 = "SHA-512";
-private static final String MD5 = "MD5";
+public static final String SHA_1 = "SHA-1";
+public static final String SHA_224 = "SHA-224";
+public static final String SHA_256 = "SHA-256";
+public static final String SHA_384 = "SHA-384";
+public static final String SHA_512 = "SHA-512";
+public static final String MD5 = "MD5";
 public static String getSHA1(String painText, boolean uppercase) {
     return getSha(painText, SHA_1, uppercase);
 }

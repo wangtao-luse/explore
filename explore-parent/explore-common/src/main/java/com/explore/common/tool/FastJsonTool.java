@@ -1,5 +1,6 @@
 package com.explore.common.tool;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -70,6 +71,7 @@ private final static String COMMON_KEY_RESULT ="result";
 		 T javaObject = mapToJson.getJSONObject(key).toJavaObject(clazz);
 		return javaObject;
 	}
+	
 	/**
 	 * Map 转实体类
 	 * @param <T>
@@ -83,6 +85,7 @@ private final static String COMMON_KEY_RESULT ="result";
 		T javaObject = mapToJson.getJSONObject(FastJsonTool.COMMON_KEY_RESULT).toJavaObject(clazz);
 		return javaObject;
 	}
+	
 	/**
 	 * map转字符串
 	 * @param map
@@ -118,5 +121,6 @@ private final static String COMMON_KEY_RESULT ="result";
 		return parseObject;
 		
 	}
+	
 
 }

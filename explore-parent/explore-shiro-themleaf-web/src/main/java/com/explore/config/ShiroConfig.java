@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.explore.common.encryption.CryptoUtil;
+import com.explore.common.tool.MessageDigestTool;
 import com.explore.online.realm.MyRealm;
 
 @Configuration
@@ -42,8 +44,8 @@ public ShiroFilterChainDefinition  shiroFilter() {
 @Bean
 public HashedCredentialsMatcher credentialsMatcher() {
 	HashedCredentialsMatcher  matcher= new HashedCredentialsMatcher();
-	matcher.setHashAlgorithmName("sha512");//加密方式
-	matcher.setHashIterations(2048);//迭代加密次数
+	matcher.setHashAlgorithmName(CryptoUtil.SIMPLEHASH_SHA512);//加密方式
+	matcher.setHashIterations(CryptoUtil.HASHITERATIONS_DEFAULT);//迭代加密次数
 	return matcher;
 	
 	

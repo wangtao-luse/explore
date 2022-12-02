@@ -20,6 +20,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.explore.common.leader.SysUser;
 import com.explore.common.req.RequestMessage;
 import com.explore.common.resp.ResponseMessage;
+import com.explore.common.tool.FastJsonTool;
 import com.explore.common.tool.StringTool;
 import com.explore.common.util.HttpDataUtil;
 import com.explore.member.api.MemberApi;
@@ -43,16 +44,17 @@ public class MyRealm extends AuthorizingRealm {
 		String credentials = new String((char[]) token.getCredentials());
 		// 3.获取数据库中存储的用户信息
 		JSONObject jsonObjct = new JSONObject();
-		jsonObjct.put("OAUTH_ID", principal);
+		jsonObjct.put("oauthId", principal);
 		RequestMessage postData = HttpDataUtil.postData(jsonObjct, null);
 		 ResponseMessage resp = memberApi.selectMemberOauthOne(postData); // 判断用户式否存在，存在将数据封装返回，否则抛出异常；
 		if (ResponseMessage.successed(resp) && StringTool.isEmpty(resp.getResultData())) {
 			throw new UnknownAccountException();
 		}
-		MemberOauthView sysUser = (MemberOauthView)resp.getResultData();
+		MemberOauthView sysUser = FastJsonTool.toJavaBean(resp.getResultData(), MemberOauthView.class);
 		String hashedCredentials = sysUser.getCredential();
 		String realmName = getName();
-		ByteSource credentialsSalt = ByteSource.Util.bytes(principal); // 4.创建封装校验逻辑对象，封装数据返回
+		ByteSource credentialsSalt = ByteSource.Util.bytes(sysUser.getPasswd()); 
+		// 4.创建封装校验逻辑对象，封装数据返回
 		// principal:认证的实体信息，可以是username，也可以是数据库表对应的用户的实体对(从数据库中获取)
 		// hashedCredentials:加密后的密码(从数据库中获取) //credentialsSalt:盐
 		// realmName:Realm对象的name，调用父类的getName()方法即可 // 

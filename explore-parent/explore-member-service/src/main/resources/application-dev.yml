@@ -22,7 +22,8 @@ spring:  datasource: #mysql的配置
     username: root
     password: mysql@958958
     schema:    - classpath:member.sql
-    data:   # - classpath:member-online-user-data.sql # 仅在第一次数据初始化时使用
+    data:     #- classpath:member-online-user-data.sql # 仅在第一次数据初始化时使用
+     - classpath:member-view.sql
     initialization-mode: always
       redis:    host: 1.116.226.147
     port: 6379

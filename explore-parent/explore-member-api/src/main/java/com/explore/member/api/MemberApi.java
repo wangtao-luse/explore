@@ -10,9 +10,9 @@ import com.explore.common.resp.ResponseMessage;
 @FeignClient(name = "explore-member-service",contextId = "member")
 public interface MemberApi {
 @RequestMapping("/member/selectMemberOauthOne")
-ResponseMessage selectMemberOauthOne(@RequestBody RequestMessage requstMsg);
+ResponseMessage selectMemberOauthOne(@RequestBody RequestMessage requestMsg);
 @RequestMapping("/member/selectMemRoleList")
-ResponseMessage selectMemRoleList(@RequestBody RequestMessage requstMsg);
+ResponseMessage selectMemRoleList(@RequestBody RequestMessage requestMsg);
 @RequestMapping("/member/selectRightDtailList")
-ResponseMessage selectRightDtailList(@RequestBody RequestMessage requstMsg);
+ResponseMessage selectRightDtailList(@RequestBody RequestMessage requestMsg);
 }

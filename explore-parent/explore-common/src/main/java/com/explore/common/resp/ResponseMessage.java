@@ -1,12 +1,15 @@
 package com.explore.common.resp;
 
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import java.io.Serializable;
+
 import com.explore.common.tool.StringTool;
 
-public class ResponseMessage {
+public class ResponseMessage  implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String resultCode;
 	private String resultMsg;
 	private Object resultData;
+	public ResponseMessage() {}
 	public ResponseMessage(String resultCode, String resultMsg) {
 		this.resultCode = resultCode;
 		this.resultMsg = resultMsg;

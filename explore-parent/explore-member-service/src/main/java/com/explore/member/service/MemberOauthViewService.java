@@ -16,6 +16,7 @@ import com.explore.common.exception.BaseException;
 import com.explore.common.redis.ObjectRedisTemplate;
 import com.explore.common.req.RequestMessage;
 import com.explore.common.resp.ResponseMessage;
+import com.explore.common.tool.FastJsonTool;
 import com.explore.common.tool.StringTool;
 import com.explore.member.persist.MemberOauthViewMapper;
 import com.explore.model.member.Oauth;
@@ -36,7 +37,8 @@ public class MemberOauthViewService extends ServiceImpl<MemberOauthViewMapper, M
 	ObjectRedisTemplate objectRedisTemplate;
 public MemberOauthView selectOne(MemberOauthView memberVo) {
 	//从缓存中获取
-		MemberOauthView memberOauth = (MemberOauthView)objectRedisTemplate.hashGet(ConstantMemRedis.MEMBER_OAUTHID, memberVo.getOauthId());
+	Object hashGet = objectRedisTemplate.hashGet(ConstantMemRedis.MEMBER_OAUTHID, memberVo.getOauthId());
+	MemberOauthView memberOauth = FastJsonTool.toJavaBean(hashGet, MemberOauthView.class);
 		if (null != memberOauth) {//获取到数据直接返回
 			return memberOauth;
 		}else {//缓存中没有,从数据库中获取,并放入缓存
