@@ -1,4 +1,4 @@
-package com.explore.member.apicontroller;
+package com.explore.member.leader.apicontroller;
 
 import java.util.ArrayList;
 import java.util.List;
