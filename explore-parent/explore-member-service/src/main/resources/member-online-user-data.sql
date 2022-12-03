@@ -17,3 +17,9 @@ insert into T_m_ROLE(ROLE_CODE,ROLE_NAME,ROLE_NOTE,ROLE_PARENT,CREATE_AT)
 values('2','个人','个人使用','-1','1669855946978');
 insert into T_m_ROLE(ROLE_CODE,ROLE_NAME,ROLE_NOTE,ROLE_PARENT,CREATE_AT)
 values('3','企业','企业使用','-1','1669855946978');
+
+--权限明细(会员online)
+insert into T_M_RIGHT_DETAIL(RIGHT_CODE,URL,ISLOGIN,ISLOG)
+values('-2','/member/login','anon','0');
+insert into T_M_RIGHT_DETAIL(RIGHT_CODE,URL,ISLOGIN,ISLOG)
+values('-2','/member/deny','anon','0');

@@ -17,4 +17,7 @@ ResponseMessage selectMemRoleList(@RequestBody RequestMessage requestMsg);
 ResponseMessage selectMemRightDetailList(@RequestBody RequestMessage requestMsg);
 @RequestMapping("/member/selectAnonUrl")
 ResponseMessage selectAnonUrl(@RequestBody RequestMessage requestMsg);
+@RequestMapping("/member/updateMemberById")
+ResponseMessage updateMemberById(@RequestBody RequestMessage requestMsg);
+
 }

@@ -24,8 +24,8 @@
 			)
 		)
 	) or RIGHT_CODE = '-2'
-    </select>
-    <select id="selectAnonUrl" parameterType="String"  resultType="String">
+    </select>    
+    <select id="selectAnonUrl" resultType="String">
       select url from t_m_right_detail where islogin = 'anon'
     </select>
 </mapper>

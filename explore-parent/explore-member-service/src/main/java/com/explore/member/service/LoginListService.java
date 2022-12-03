@@ -58,6 +58,7 @@ public ResponseMessage selectLoginList(RequestMessage requestMsg) {
 		throw new BaseException(e.getMessage());
 	} catch (Exception e) {
 		// TODO: handle exception
+		e.printStackTrace();
 		logger.error(e.getMessage());
 		throw new BaseException(ConstantSys.SYS_ERROR);
 	}
@@ -81,6 +82,7 @@ public ResponseMessage insertLoginList(RequestMessage requestMsg) {
 		throw new BaseException(e.getMessage());
 	} catch (Exception e) {
 		// TODO: handle exception
+		e.printStackTrace();
 		logger.error(e.getMessage());
 		throw new BaseException(ConstantSys.SYS_ERROR);
 	}

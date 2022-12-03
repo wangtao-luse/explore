@@ -27,7 +27,7 @@ import com.explore.model.member.RightDetail;
  */
 @Service
 public class RightDetailService extends ServiceImpl<RightDetailMapper, RightDetail> {
-	private final static Logger logger=LoggerFactory.getLogger(OauthService.class);
+	private final static Logger logger=LoggerFactory.getLogger(RightDetailService.class);
 /**
  * 查看当前用户的权限
  * @param requestMsg
@@ -49,6 +49,7 @@ public ResponseMessage selectMemRightDetailList(RequestMessage requestMsg) {
 		throw new BaseException(e.getMessage());
 	} catch (Exception e) {
 		// TODO: handle exception
+		e.printStackTrace();
 		logger.error(e.getMessage());
 		throw new BaseException(ConstantSys.SYS_ERROR);
 	}
@@ -70,6 +71,7 @@ public ResponseMessage selectAnonUrl(RequestMessage requestMsg) {
 		throw new BaseException(e.getMessage());
 	} catch (Exception e) {
 		// TODO: handle exception
+		e.printStackTrace();
 		logger.error(e.getMessage());
 		throw new BaseException(ConstantSys.SYS_ERROR);
 	}

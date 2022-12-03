@@ -48,6 +48,7 @@ public class RoleService extends ServiceImpl<RoleMapper, Role> {
 			throw new BaseException(e.getMessage());
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			logger.error(e.getMessage());
 			throw new BaseException(ConstantSys.SYS_ERROR);
 		}

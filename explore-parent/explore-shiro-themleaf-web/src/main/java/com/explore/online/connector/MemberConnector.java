@@ -55,5 +55,15 @@ public ResponseMessage selectAnonUrl(JSONObject jsonObject,HttpServletRequest re
 	RequestMessage requestMsg = HttpDataUtil.postData(jsonObject, request);
 	return memberApi.selectAnonUrl(requestMsg);
 }
+/**
+ * 修改用户主表信息
+ * @param jsonObject
+ * @param request
+ * @return
+ */
+public ResponseMessage updateMemberById(JSONObject jsonObject,HttpServletRequest request) {
+	RequestMessage requestMsg = HttpDataUtil.postData(jsonObject, request);
+	return memberApi.updateMemberById(requestMsg);
+}
 
 }

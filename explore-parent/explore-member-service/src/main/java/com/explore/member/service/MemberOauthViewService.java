@@ -19,7 +19,6 @@ import com.explore.common.resp.ResponseMessage;
 import com.explore.common.tool.FastJsonTool;
 import com.explore.common.tool.StringTool;
 import com.explore.member.persist.MemberOauthViewMapper;
-import com.explore.model.member.Oauth;
 import com.explore.model.member.vo.MemberOauthView;
 
 /**
@@ -68,12 +67,17 @@ public ResponseMessage selectMemberOauthOne(RequestMessage requestMsg) {
 		throw new BaseException(e.getMessage());
 	} catch (Exception e) {
 		// TODO: handle exception
+		e.printStackTrace();
 		logger.error(e.getMessage());
 		throw new BaseException(ConstantSys.SYS_ERROR);
 	}
 	return responseMessage;
 }
-//修改密码
+    /**
+     * 修改密码
+     * @param requestMsg
+     * @return
+     */
 	@Transactional
 	public ResponseMessage updatePasswd(RequestMessage requestMsg) {
 		ResponseMessage responseMessage = ResponseMessage.success();
@@ -85,7 +89,7 @@ public ResponseMessage selectMemberOauthOne(RequestMessage requestMsg) {
 			if (null != selectOne) {
 				//修改密码
 				String salt = StringTool.getUuid();
-				String sha512Hash = CryptoUtil.sha512Hash(memberVo.getCredential(), salt, CryptoUtil.HASHITERATIONS_DEFAULT);
+				String sha512Hash = CryptoUtil.simpleHash(CryptoUtil.SIMPLEHASH_SHA512, memberVo.getCreateIp(), salt, DEFAULT_BATCH_SIZE);
 				selectOne.setCredential(sha512Hash);
 				selectOne.setPasswd(salt);
 				this.baseMapper.updateById(memberVo);
@@ -99,6 +103,7 @@ public ResponseMessage selectMemberOauthOne(RequestMessage requestMsg) {
 			throw new BaseException(e.getMessage());
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			logger.error(e.getMessage());
 			throw new BaseException(ConstantSys.SYS_ERROR);
 		}

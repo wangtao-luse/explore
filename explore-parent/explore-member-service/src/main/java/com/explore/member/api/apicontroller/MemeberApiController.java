@@ -7,6 +7,7 @@ import com.explore.common.req.RequestMessage;
 import com.explore.common.resp.ResponseMessage;
 import com.explore.member.api.MemberApi;
 import com.explore.member.service.MemberOauthViewService;
+import com.explore.member.service.MemberService;
 import com.explore.member.service.RightDetailService;
 import com.explore.member.service.RoleService;
 
@@ -20,6 +21,8 @@ public class MemeberApiController implements MemberApi{
 	RoleService roleService;
 	@Autowired
 	MemberOauthViewService memberOauthViewService;
+	@Autowired
+	MemberService memberService;
 	@Override
 	public ResponseMessage selectMemberOauthOne(RequestMessage requestMsg) {
 		// TODO Auto-generated method stub
@@ -42,6 +45,12 @@ public class MemeberApiController implements MemberApi{
 	public ResponseMessage selectAnonUrl(RequestMessage requestMsg) {
 		// TODO Auto-generated method stub
 		return rightDetailService.selectAnonUrl(requestMsg);
+	}
+
+	@Override
+	public ResponseMessage updateMemberById(RequestMessage requestMsg) {
+		// TODO Auto-generated method stub
+		return memberService.updateMemberById(requestMsg);
 	}
 
 }

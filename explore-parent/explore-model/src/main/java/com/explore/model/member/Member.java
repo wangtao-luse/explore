@@ -19,8 +19,14 @@ import io.swagger.annotations.ApiModelProperty;
 @TableName("t_m_member")
 @ApiModel(value="Member对象", description="会员信息表")
 public class Member implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+    public static final String MEMBER_STATUS_DISABLE = "0";    
+    public static final String MEMBER_STATUS_AVAILABLE = "1";
+    public static final String MEMBER_STATUS_LOCKOUT = "2";
+    public static final String MEMBER_CATEGORY_PERSON = "1";
+    public static final String MEMBER_CATEGORY_BUSINESS = "2";
 
-    private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "编号")
     @TableId(value = "ID", type = IdType.AUTO)

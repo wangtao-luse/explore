@@ -57,6 +57,7 @@ public class GroupService extends ServiceImpl<GroupMapper, Group> {
 			throw new BaseException(e.getMessage());
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			logger.error(e.getMessage());
 			throw new BaseException(ConstantSys.SYS_ERROR);
 		}

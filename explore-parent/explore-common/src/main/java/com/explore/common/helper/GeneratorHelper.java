@@ -26,7 +26,7 @@ private static final String MODULE_MEMBER_SERVICE_PACKAGEPREFIX="member";
 		String[] tablePrefix =  new String [] {"t_m"};
 		String[] tableNames = new String[] {
 				"t_m_member","T_M_OAUTH","t_m_right_detail","t_m_role_right","t_m_group_role","t_m_member_group",
-				"T_M_GROUP","T_M_PERSON","T_M_BUSINESS"
+				"T_M_GROUP","T_M_ROLE","T_M_PERSON","T_M_BUSINESS"
 				};
 		         tableNames = new String[] {"t_m_member_Oauth_view"};
 		         tableNames = new String[] {"T_M_GROUP","T_M_ROLE"};

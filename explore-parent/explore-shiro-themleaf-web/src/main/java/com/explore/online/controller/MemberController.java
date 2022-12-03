@@ -81,5 +81,20 @@ public class MemberController {
 			  } 
 		     return  responseMessage; 
 	  }
-	 
+	  /**
+	   * 没有权限访问页面
+	   * @return
+	   */
+	 @GetMapping("/deny")
+	public String deny() {
+		return "/member/deny";
+	}
+	 /**
+	  * 404页面
+	  * @return
+	  */
+	 @GetMapping("/lost")
+	public String lost() {
+			return "/error/lost";
+		}
 }

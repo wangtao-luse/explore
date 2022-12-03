@@ -72,10 +72,10 @@ public class MyRealm extends AuthorizingRealm {
 		// TODO Auto-generated method stub
 		// 1.从PrincipalCollection获取登录用户的信息
 		// 获取登录用户的信息
-		SysUser principal = (SysUser) principals.getPrimaryPrincipal();
+		SesessionUser principal = (SesessionUser) principals.getPrimaryPrincipal();
 		// 2.利用登录的用户信息来获取当前用户的角色或权限(可能需要查询数据库)
 		JSONObject jsonObjct = new JSONObject();
-		jsonObjct.put("uid", principal);
+		jsonObjct.put("uid", principal.getUid());
 	    ResponseMessage respMsg = memberConnector.selectMemRoleList(jsonObjct,null);		
 		ResponseMessage response = memberConnector.selectMemRightDetailList(jsonObjct,null); 
 		// 3.创建SimpleAuthorizationInfo并设置roles属性和StringPermissions属性

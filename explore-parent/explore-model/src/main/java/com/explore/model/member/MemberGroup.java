@@ -21,7 +21,9 @@ import io.swagger.annotations.ApiModelProperty;
 public class MemberGroup implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    public static final String MEMBER_GROUPCODE_ADMIN="1";
+    public static final String MEMBER_GROUPCODE_PERSON="2";
+    public static final String MEMBER_GROUPCODE_BUSINESS="3";
     @ApiModelProperty(value = "编号")
     @TableId(value = "ID", type = IdType.AUTO)
     private Integer id;

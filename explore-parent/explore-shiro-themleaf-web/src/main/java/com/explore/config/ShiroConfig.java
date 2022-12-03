@@ -45,8 +45,9 @@ public DefaultWebSecurityManager securityManager(MyRealm myRealm) {
 public ShiroFilterFactoryBean  shiroFilterFactoryBean(DefaultWebSecurityManager securityManager) {
 	ShiroFilterFactoryBean  shiroFilter = new ShiroFilterFactoryBean ();
 	shiroFilter.setSecurityManager(securityManager);
+	shiroFilter.setUnauthorizedUrl("/membeer/deny");// 未授权界面(没有权限);
 	//设置登录页面,如果不设置会默认去找项目根目录下的login.jsp
-	shiroFilter.setLoginUrl("/login");
+	shiroFilter.setLoginUrl("/member/login");
 	//配置路径过滤key：是ant路径,支持*,**,?;value配置shiro的默认过滤器, anon:匿名访问;authc:需要认证(登录)才能访问; 
 	//实际开发中会从数据库中读取对应的权限
 	Map<String,String> filterMap = new LinkedHashMap<String, String>();
@@ -55,16 +56,20 @@ public ShiroFilterFactoryBean  shiroFilterFactoryBean(DefaultWebSecurityManager 
 	filterMap.put("/js/**","anon");
 	filterMap.put("/img/**","anon");
 	filterMap.put("/test/**", "anon");
-	ResponseMessage resp = memberConnector.selectAnonUrl(null, null);
-	if(ResponseMessage.successed(resp) && !StringTool.isEmpty(resp.getResultData())) {
-		List<String> permission = (List<String>)resp.getResultData();
-		for (String ssion : permission) {
-			filterMap.put(ssion, "anon");
-		}
-	}
-	shiroFilter.setFilterChainDefinitionMap(filterMap);
+	//ResponseMessage resp = memberConnector.selectAnonUrl(null, null);
+	//if(ResponseMessage.successed(resp) && !StringTool.isEmpty(resp.getResultData())) {
+	//	List<String> permission = (List<String>)resp.getResultData();
+	//	for (String ssion : permission) {
+		//	filterMap.put(ssion, "anon");
+		//}
+	//}
+	filterMap.put("/member/login", "anon");
+	filterMap.put("/member/deny", "anon");
 	//不能访问的情况下shiro会自动跳转到setLoginUrl()的页面;
 	filterMap.put("/**", "authc");
+	shiroFilter.setFilterChainDefinitionMap(filterMap);
+	
+	
 	return shiroFilter;
 }
 //告诉Shiro使用什么方式加密

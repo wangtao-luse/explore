@@ -1,5 +1,7 @@
 package com.explore.member.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -16,5 +18,5 @@ import com.explore.model.member.Business;
  */
 @Service
 public class BusinessService extends ServiceImpl<BusinessMapper, Business> {
-
+	private final static Logger logger=LoggerFactory.getLogger(BusinessService.class);
 }

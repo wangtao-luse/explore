@@ -21,7 +21,8 @@ import io.swagger.annotations.ApiModelProperty;
 public class Oauth implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    public static final String OAUTH_OAUTHTYPE_EMAIL = "email";
+    public static final String OAUTH_OAUTHTYPE_UNAME = "uanme";
     @ApiModelProperty(value = "编号")
     @TableId(value = "ID", type = IdType.AUTO)
     private Integer id;
@@ -34,7 +35,7 @@ public class Oauth implements Serializable {
     @TableField("OAUTH_ID")
     private String oauthId;
 
-    @ApiModelProperty(value = "第三方登录平台标识(手机：phone;邮箱：email;QQ:qq;微信：wechat;用户名：uid;微博:weibo)")
+    @ApiModelProperty(value = "第三方登录平台标识(手机：phone;邮箱：email;QQ:qq;微信：wechat;用户名：uname;微博:weibo)")
     @TableField("OAUTH_TYPE")
     private String oauthType;
 

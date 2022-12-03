@@ -114,6 +114,7 @@ remark varchar(300) COMMENT '备注'
 --12.个人信息
 CREATE TABLE IF NOT EXISTS T_M_PERSON(
 ID	INT	PRIMARY KEY AUTO_INCREMENT COMMENT'编号',
+UID	VARCHAR(10)	COMMENT'用户唯一号',
 gender VARCHAR(2)COMMENT'性别 (0:女;1:男)',
 age varchar(8)COMMENT'年龄(baby:0-6;junior:7-12;teenager:13-17;young:18-45;mid:46-69;old:69岁及以上)',
 email varchar(200) COMMENT'Email',
@@ -124,6 +125,7 @@ REMARK VARCHAR(300) COMMENT'审核不通过备注'
 --13 企业信息
 CREATE TABLE IF NOT EXISTS T_M_BUSINESS(
 ID	INT	PRIMARY KEY AUTO_INCREMENT COMMENT'编号',
+UID	VARCHAR(10)	COMMENT'用户唯一号',
 BUSINESSNAME varchar(200) COMMENT '企业名称',
 TAXPAYERID varchar(18) COMMENT '统一社会信用代码',
 PROVINCE   varchar(18) COMMENT '企业省份',
@@ -153,7 +155,7 @@ CREATE TABLE IF NOT EXISTS T_M_SYS_OAUTH(
 ID	INT PRIMARY KEY AUTO_INCREMENT COMMENT'编号',
 UID	VARCHAR(10) COMMENT'用户唯一号',
 OAUTH_ID VARCHAR(200) UNIQUE COMMENT'第三方登录唯一ID	(站内保存手机号码,用户名，邮箱)',
-OAUTH_TYPE VARCHAR(18) COMMENT'第三方登录平台标识(手机：phone;邮箱：email;QQ:qq;微信：wechat;用户名：uid;微博:weibo)',
+OAUTH_TYPE VARCHAR(18) COMMENT'第三方登录平台标识(手机：phone;邮箱：email;QQ:qq;微信：wechat;用户名：uname;微博:weibo)',
 CREDENTIAL VARCHAR(500)COMMENT'密码凭证(站内的保存密码，站外的不保存或保存token)',
 NICKNAME	VARCHAR(18) COMMENT'昵称',
 AVATAR	VARCHAR(120) COMMENT'图像',
