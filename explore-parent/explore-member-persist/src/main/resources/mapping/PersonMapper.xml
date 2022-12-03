@@ -5,6 +5,7 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.explore.model.member.Person">
         <id column="ID" property="id" />
+        <result column="UID" property="uid" />
         <result column="gender" property="gender" />
         <result column="age" property="age" />
         <result column="email" property="email" />
@@ -15,7 +16,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID, gender, age, email, phone, STATUS, REMARK
+        ID, UID, gender, age, email, phone, STATUS, REMARK
     </sql>
 
 </mapper>

@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author wwangtaoc11@gamil.com
- * @since 2022-12-01
+ * @since 2022-12-03
  */
 public interface BusinessMapper extends BaseMapper<Business> {
 

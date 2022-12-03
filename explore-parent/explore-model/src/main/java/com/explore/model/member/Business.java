@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * </p>
  *
  * @author wwangtaoc11@gamil.com
- * @since 2022-12-01
+ * @since 2022-12-03
  */
 @TableName("t_m_business")
 @ApiModel(value="Business对象", description="企业信息表")
@@ -25,6 +25,10 @@ public class Business implements Serializable {
     @ApiModelProperty(value = "编号")
     @TableId(value = "ID", type = IdType.AUTO)
     private Integer id;
+
+    @ApiModelProperty(value = "用户唯一号")
+    @TableField("UID")
+    private String uid;
 
     @ApiModelProperty(value = "企业名称")
     @TableField("BUSINESSNAME")
@@ -77,6 +81,14 @@ public class Business implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getBusinessname() {
@@ -171,6 +183,7 @@ public class Business implements Serializable {
     public String toString() {
         return "Business{" +
         "id=" + id +
+        ", uid=" + uid +
         ", businessname=" + businessname +
         ", taxpayerid=" + taxpayerid +
         ", province=" + province +

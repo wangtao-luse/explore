@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 import com.explore.common.encryption.CryptoUtil;
 import com.explore.common.resp.ResponseMessage;
 import com.explore.common.tool.StringTool;
-import com.explore.model.member.RightDetail;
 import com.explore.online.connector.MemberConnector;
 import com.explore.online.realm.MyRealm;
 

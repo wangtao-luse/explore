@@ -53,6 +53,8 @@ public class MemberService extends ServiceImpl<MemberMapper, Member>  {
 	OauthMapper oauthMapper;
 	@Autowired
 	OauthService oauthService;
+	@Autowired
+	PersonService personService;
 	/**
 	 * 插入会员信息主表-内部使用
 	 * @param jsonObject
@@ -82,7 +84,6 @@ public class MemberService extends ServiceImpl<MemberMapper, Member>  {
 			JSONObject jsonObject = requestMsg.getBody().getContent();
 			String uid = jsonObject.getString("uid");
 			String category = jsonObject.getString("category");
-			String remoteAddr = jsonObject.getString("remoteAddr");
 			String credential = jsonObject.getString("credential");
 			String username = jsonObject.getString("username");
 			//1.插入会员主表信息
@@ -106,11 +107,14 @@ public class MemberService extends ServiceImpl<MemberMapper, Member>  {
 				oList.add(oauth);
 			}			
 			this.oauthService.insertOauthBatch(oList);
-						
-			Person p = new Person();
-			this.personMapper.insert(p);
-			Business business = new Business();
-			this.businessMapper.insert(business );
+			if(Member.MEMBER_CATEGORY_PERSON.equals(category)) {
+				//3.插入个人信息	
+				this.personService.insertPerson(jsonObject);
+			}else {
+				//4.插入企业信息
+				Business business = new Business();
+				this.businessMapper.insert(business );
+			}			
 			//5.插入默认分组信息
 			MemberGroup memGroup = new MemberGroup();
 			memGroup.setUid(uid);

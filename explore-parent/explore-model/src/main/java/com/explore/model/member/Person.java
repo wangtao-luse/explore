@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * </p>
  *
  * @author wwangtaoc11@gamil.com
- * @since 2022-12-01
+ * @since 2022-12-03
  */
 @TableName("t_m_person")
 @ApiModel(value="Person对象", description="个人信息表")
@@ -26,16 +26,24 @@ public class Person implements Serializable {
     @TableId(value = "ID", type = IdType.AUTO)
     private Integer id;
 
+    @ApiModelProperty(value = "用户唯一号")
+    @TableField("UID")
+    private String uid;
+
     @ApiModelProperty(value = "性别 (0:女;1:男)")
+    @TableField("GENDER")
     private String gender;
 
     @ApiModelProperty(value = "年龄(baby:0-6;junior:7-12;teenager:13-17;young:18-45;mid:46-69;old:69岁及以上)")
+    @TableField("AGE")
     private String age;
 
     @ApiModelProperty(value = "Email")
+    @TableField("Email")
     private String email;
 
     @ApiModelProperty(value = "手机号码")
+    @TableField("PHONE")
     private String phone;
 
     @ApiModelProperty(value = "1:待审核;2:审核通过;3:审核不通过")
@@ -53,6 +61,14 @@ public class Person implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getGender() {
@@ -107,6 +123,7 @@ public class Person implements Serializable {
     public String toString() {
         return "Person{" +
         "id=" + id +
+        ", uid=" + uid +
         ", gender=" + gender +
         ", age=" + age +
         ", email=" + email +

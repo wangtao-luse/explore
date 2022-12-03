@@ -1,9 +1,8 @@
 package com.explore.member.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.explore.member.persist.BusinessMapper;
 import com.explore.model.member.Business;
@@ -14,9 +13,18 @@ import com.explore.model.member.Business;
  * </p>
  *
  * @author wwangtaoc11@gamil.com
- * @since 2022-12-01
+ * @since 2022-12-03
  */
 @Service
 public class BusinessService extends ServiceImpl<BusinessMapper, Business> {
-	private final static Logger logger=LoggerFactory.getLogger(BusinessService.class);
+	/**
+	 * 内部使用
+	 * @param jsonObject
+	 * @return
+	 */
+public int insertBusiness(JSONObject jsonObject) {
+	Business po = jsonObject.toJavaObject(Business.class);
+	int insert = this.baseMapper.insert(po);
+	return insert;
+}
 }

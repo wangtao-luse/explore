@@ -29,7 +29,7 @@ private static final String MODULE_MEMBER_SERVICE_PACKAGEPREFIX="member";
 				"T_M_GROUP","T_M_ROLE","T_M_PERSON","T_M_BUSINESS"
 				};
 		         tableNames = new String[] {"t_m_member_Oauth_view"};
-		         tableNames = new String[] {"T_M_GROUP","T_M_ROLE"};
+		         tableNames = new String[] {"T_M_PERSON","T_M_BUSINESS"};
 		boolean view = false;//是否为视图
 		generatorCode(tablePrefix, tableNames, moduleName, moudelPrefix, author,view);
 	}
@@ -89,7 +89,7 @@ private static Properties setProperties(String module,String packageprefix,boole
 	properties.setProperty("entity_path", entity_path);
 	properties.setProperty("mapper_path",mapper_path );
 	properties.setProperty("xml_path",xml_path);
-	properties.setProperty("SERVICE_PATH","" );
+	//properties.setProperty("SERVICE_PATH","");
 	properties.setProperty("SERVICE_IMPL_PATH",SERVICE_IMPL_PATH );
 	properties.setProperty("pathInfo","1" );//1:表示之间生成文件到项目;0:表示将文件生成到指定目录
 	//策略配置
