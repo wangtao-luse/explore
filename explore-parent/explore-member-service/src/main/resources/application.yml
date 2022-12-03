@@ -1,3 +1,7 @@
-spring:  profiles:
-    #应用环境配置信息    active: dev  application:
-    #应用名称    name:  explore-member-service
+spring:
+  profiles:
+    #应用环境配置信息
+    active: dev
+  application:
+    #应用名称
+    name:  explore-member-service

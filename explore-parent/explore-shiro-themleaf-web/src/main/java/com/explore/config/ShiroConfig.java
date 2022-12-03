@@ -56,15 +56,14 @@ public ShiroFilterFactoryBean  shiroFilterFactoryBean(DefaultWebSecurityManager 
 	filterMap.put("/js/**","anon");
 	filterMap.put("/img/**","anon");
 	filterMap.put("/test/**", "anon");
-	//ResponseMessage resp = memberConnector.selectAnonUrl(null, null);
-	//if(ResponseMessage.successed(resp) && !StringTool.isEmpty(resp.getResultData())) {
-	//	List<String> permission = (List<String>)resp.getResultData();
-	//	for (String ssion : permission) {
-		//	filterMap.put(ssion, "anon");
-		//}
-	//}
-	filterMap.put("/member/login", "anon");
-	filterMap.put("/member/deny", "anon");
+	ResponseMessage resp = memberConnector.selectAnonUrl(null, null);
+	if(ResponseMessage.successed(resp) && !StringTool.isEmpty(resp.getResultData())) {
+		List<String> permission = (List<String>)resp.getResultData();
+		for (String ssion : permission) {
+			filterMap.put(ssion, "anon");
+		}
+	}
+
 	//不能访问的情况下shiro会自动跳转到setLoginUrl()的页面;
 	filterMap.put("/**", "authc");
 	shiroFilter.setFilterChainDefinitionMap(filterMap);
