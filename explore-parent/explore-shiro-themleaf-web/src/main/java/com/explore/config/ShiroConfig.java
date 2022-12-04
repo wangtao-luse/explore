@@ -17,6 +17,8 @@ import com.explore.common.tool.StringTool;
 import com.explore.online.connector.MemberConnector;
 import com.explore.online.realm.MyRealm;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
+
 @Configuration
 public class ShiroConfig {
 	 @Autowired 
@@ -79,8 +81,10 @@ public HashedCredentialsMatcher credentialsMatcher() {
 	matcher.setHashAlgorithmName(CryptoUtil.SIMPLEHASH_SHA512);//加密方式
 	matcher.setHashIterations(CryptoUtil.HASHITERATIONS_DEFAULT);//迭代加密次数
 	return matcher;
-	
-	
+}
+@Bean //为了整合themleaf,配置用于解析thymeleaf中的shiro:相关属性
+public ShiroDialect shiroDialect() {
+	return new ShiroDialect();
 }
 
 }

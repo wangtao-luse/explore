@@ -42,7 +42,7 @@
     	<artifactId>explore-member-api</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
     </dependency>
-     <dependency>
+    <dependency>
     	<groupId>com.explore</groupId>
     	<artifactId>explore-model</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
