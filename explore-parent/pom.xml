@@ -42,6 +42,7 @@
    <springfox-swagger2.version>3.0.0</springfox-swagger2.version>
    <mybatis-plus-boot.version>3.5.2</mybatis-plus-boot.version>
    <spring-boot-redis.version>1.4.7.RELEASE</spring-boot-redis.version>
+   <thymeleaf-extras-shiro.version>2.1.0</thymeleaf-extras-shiro.version>
   </properties>
   <dependencies>
      <dependency>
@@ -136,6 +137,11 @@
 		   <artifactId>shiro-spring-boot-web-starter</artifactId>
 		   <version>${shiro-spring-boot.version}</version>
 	    </dependency>
+	    <dependency>
+		  <groupId>com.github.theborakompanioni</groupId>
+		  <artifactId>thymeleaf-extras-shiro</artifactId>
+		  <version>${thymeleaf-extras-shiro.version}</version>
+		</dependency>
 	    <dependency>
 		  <groupId>org.apache.shiro</groupId>
 		  <artifactId>shiro-core</artifactId>
