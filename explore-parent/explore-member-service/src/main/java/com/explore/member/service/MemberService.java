@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -55,6 +56,8 @@ public class MemberService extends ServiceImpl<MemberMapper, Member>  {
 	OauthService oauthService;
 	@Autowired
 	PersonService personService;
+	@Autowired
+	BusinessService businessService;
 	/**
 	 * 插入会员信息主表-内部使用
 	 * @param jsonObject
@@ -78,6 +81,7 @@ public class MemberService extends ServiceImpl<MemberMapper, Member>  {
 	 * @param requestMsg
 	 * @return
 	 */
+	@Transactional
 	public ResponseMessage regsub(RequestMessage requestMsg) {
 		ResponseMessage responseMessage = ResponseMessage.success();
 		try {
@@ -111,19 +115,17 @@ public class MemberService extends ServiceImpl<MemberMapper, Member>  {
 				//3.插入个人信息	
 				this.personService.insertPerson(jsonObject);
 			}else {
-				//4.插入企业信息
-				Business business = new Business();
-				this.businessMapper.insert(business );
+				//3.插入企业信息
+				this.businessService.insertBusiness(jsonObject);
 			}			
-			//5.插入默认分组信息
+			//4.插入默认分组信息
 			MemberGroup memGroup = new MemberGroup();
 			memGroup.setUid(uid);
 			if (Member.MEMBER_CATEGORY_BUSINESS.equals(category)) {
 				memGroup.setGroupCode(MemberGroup.MEMBER_GROUPCODE_BUSINESS);
 			}else {
 				memGroup.setGroupCode(MemberGroup.MEMBER_GROUPCODE_PERSON);
-			}
-			
+			}			
 			this.memberGroupMapper.insert(memGroup);
 			
 				
@@ -146,6 +148,7 @@ public class MemberService extends ServiceImpl<MemberMapper, Member>  {
 	 * @param requestMsg
 	 * @return
 	 */
+	@Transactional
 	public ResponseMessage updateMemberById(RequestMessage requestMsg) {
 		ResponseMessage responseMessage = ResponseMessage.success();
 		try {

@@ -1,8 +1,6 @@
 package com.explore.online.realm;
 
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -18,11 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSONObject;
 import com.explore.common.ao.SesessionUser;
-import com.explore.common.leader.SysUser;
 import com.explore.common.resp.ResponseMessage;
 import com.explore.common.tool.FastJsonTool;
 import com.explore.common.tool.StringTool;
-import com.explore.model.member.RightDetail;
 import com.explore.model.member.vo.MemberOauthView;
 import com.explore.online.connector.MemberConnector;
 public class MyRealm extends AuthorizingRealm {

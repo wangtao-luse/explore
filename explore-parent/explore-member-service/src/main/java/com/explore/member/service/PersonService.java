@@ -1,6 +1,7 @@
 package com.explore.member.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -22,6 +23,7 @@ public class PersonService extends ServiceImpl<PersonMapper, Person> {
  * @param jsonObject
  * @return
  */
+	@Transactional
 public int insertPerson(JSONObject jsonObject) {
 	Person p = jsonObject.toJavaObject(Person.class);
 	int insert = this.baseMapper.insert(p);

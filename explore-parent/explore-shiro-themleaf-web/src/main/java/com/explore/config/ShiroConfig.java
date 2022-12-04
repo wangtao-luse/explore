@@ -55,6 +55,8 @@ public ShiroFilterFactoryBean  shiroFilterFactoryBean(DefaultWebSecurityManager 
 	filterMap.put("/js/**","anon");
 	filterMap.put("/img/**","anon");
 	filterMap.put("/test/**", "anon");
+	// 配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
+	filterMap.put("/shiro/logout", "logout");
 	ResponseMessage resp = memberConnector.selectAnonUrl(null, null);
 	if(ResponseMessage.successed(resp) && !StringTool.isEmpty(resp.getResultData())) {
 		List<String> permission = (List<String>)resp.getResultData();
