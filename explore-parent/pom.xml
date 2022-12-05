@@ -47,8 +47,10 @@
    <spring-boot-redis.version>1.4.7.RELEASE</spring-boot-redis.version>
    <redisson.version>3.18.1</redisson.version>
    <thymeleaf-extras-shiro.version>2.1.0</thymeleaf-extras-shiro.version>
+   <mail.version>3.0.0</mail.version>
   </properties>
   <dependencies>
+   
   <!-- redisson -->
    <dependency>
 	  <groupId>org.redisson</groupId>
@@ -160,6 +162,11 @@
 		  <artifactId>shiro-core</artifactId>
 		  <version>${shiro-spring-boot.version}</version>
 		</dependency> 
+		<dependency>
+		  <groupId>org.springframework.boot</groupId>
+		  <artifactId>spring-boot-starter-mail</artifactId>
+		  <version>${mail.version}</version>
+		</dependency>
       </dependencies>
   </dependencyManagement>
   <build>
