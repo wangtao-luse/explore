@@ -7,8 +7,8 @@
     <artifactId>explore-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>explore-member-persist</artifactId>
-  <name>explore-member-persist</name>
+  <artifactId>explore-message-service</artifactId>
+  <name>explore-message-service</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,12 +21,13 @@
     </dependency>
     <dependency>
     	<groupId>com.explore</groupId>
-    	<artifactId>explore-model</artifactId>
+    	<artifactId>explore-message-persist</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
     	<groupId>com.explore</groupId>
-    	<artifactId>explore-common</artifactId>
+    	<artifactId>explore-message-api</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>

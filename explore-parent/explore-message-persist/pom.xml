@@ -7,34 +7,22 @@
     <artifactId>explore-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>explore-security-themleaf-web</artifactId>
-  <packaging>war</packaging>
-  <name>explore-security-themleaf-web Maven Webapp</name>
+  <artifactId>explore-message-persist</artifactId>
+  <name>explore-message-persist</name>
   <url>http://maven.apache.org</url>
-  <dependencies>  
-   <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-thymeleaf</artifactId>
-   </dependency>
-   <!-- eurek client -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+    <!-- eurek client -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
     </dependency>
-    <!-- security -->
-    <dependency>
-	   <groupId>org.springframework.boot</groupId>
-	   <artifactId>spring-boot-starter-security</artifactId>
-	</dependency>    
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-    	<groupId>com.explore</groupId>
-    	<artifactId>explore-member-api</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
     	<groupId>com.explore</groupId>
@@ -47,7 +35,4 @@
     	<version>0.0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
-  <build>
-    <finalName>explore-security-themleaf-web</finalName>
-  </build>
 </project>

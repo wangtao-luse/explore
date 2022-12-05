@@ -23,6 +23,9 @@
     <module>explore-order-api</module>
     <module>explore-security-themleaf-web</module>
     <module>explore-shiro-themleaf-web</module>
+    <module>explore-message-service</module>
+    <module>explore-message-persist</module>
+    <module>explore-message-api</module>
   </modules>
   <properties>
    <java.version>1.8</java.version>
@@ -46,21 +49,25 @@
    <thymeleaf-extras-shiro.version>2.1.0</thymeleaf-extras-shiro.version>
   </properties>
   <dependencies>
+  <!-- redisson -->
+   <dependency>
+	  <groupId>org.redisson</groupId>
+	  <artifactId>redisson-spring-boot-starter</artifactId>
+	  <version>${redisson.version}</version>
+	</dependency>
+	 <!-- reids -->
      <dependency>
 	    <groupId>org.springframework.boot</groupId>
 	    <artifactId>spring-boot-starter-redis</artifactId>
 	    <version>${spring-boot-redis.version}</version>
-	 </dependency>
-	 <dependency>
-		 <groupId>org.redisson</groupId>
-		 <artifactId>redisson</artifactId>
-		 <version>${redisson.version}</version>
-	 </dependency>
+	 </dependency>	
+	 <!-- mybatis plues -->
      <dependency>
 		<groupId>com.baomidou</groupId>
 		<artifactId>mybatis-plus-boot-starter</artifactId>
 		<version>${mybatis-plus-boot.version}</version>
 	 </dependency>
+	 <!-- swagger -->
 	 <dependency>
 	  <groupId>io.springfox</groupId>
 	  <artifactId>springfox-swagger2</artifactId>
